@@ -1,23 +1,225 @@
-<!DOCTYPE html>
-<html lang="">
+<style type="text/css" media="all">
+#lineItem tr {
+	page-break-inside: avoid;
+	page-break-after:auto;
+}
+</style>
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link rel="icon" href="./favicon.ico">
-    <title>test_vue_cli</title>
-    <link href="./css/app.96efaeff.css" rel="preload" as="style">
-    <link href="./js/app.2a272ed5.js" rel="preload" as="script">
-    <link href="./js/chunk-vendors.3e400202.js" rel="preload" as="script">
-    <link href="./css/app.96efaeff.css" rel="stylesheet">
-</head>
 
-<body><noscript><strong>We're sorry but test_vue_cli doesn't work properly without JavaScript enabled. Please enable it
-            to continue.</strong></noscript>
-    <div id="app"></div>
-    <script src="./js/chunk-vendors.3e400202.js"></script>
-    <script src="./js/app.2a272ed5.js"></script>
-</body>
 
-</html>
+<div style="font-family: Open Sans;font-size: 10pt;color: #333333;">
+
+    <div style="padding: 0 0.40in 0 0.55in;">
+        <div style="display:table;width:100%;">
+            <div style="float:left;width:50%;">
+              <div>
+                  %ScaledLogoImage%
+              </div>
+              <b>%CompanyName%</b>
+              <br>
+              <div>
+                <span id="tmp_org_address" style="white-space: pre-wrap;">%CompanyStreetAddress1%<br>%CompanyCity% %CompanyState% %CompanyPostalCode%<br>%CompanyCountry%
+            </span>
+          </div>
+            </div>
+            <div style="float:right;width:50%;text-align:right;">
+              <span style="font-size: 28pt;color: #000000;">INVOICE</span>
+              <br>
+              <span style="font-size: 10pt;color: #817d7d;" id="tmp_entity_number"><b>Invoice# %InvoiceNumber%</b></span>
+              <div style="clear:both;margin-top:20px;">
+                  <span style="font-size:8pt;"><b>Balance Due</b></span>
+                  <br>
+                  <b>%InvoiceBalance%</b>
+                  <br>
+              </div>
+            </div>
+        </div>
+
+        <table style="width:100%;margin-top:30px;table-layout:fixed;border-spacing: 0;border-collapse: collapse;">
+            <tbody>
+                <tr>
+
+                  <td style="width:50%;vertical-align:bottom;word-wrap: break-word;">
+
+                      <div>
+                          <label id="tmp_billing_address_label" style="font-size: 10pt;color: #817d7d;">Bill To</label>
+                          <br>%CustomerName%<br>
+                          <span id="tmp_billing_address" style="white-space: pre-wrap;">%CustomerBAddress%<br>%CustomerBCity%, %CustomerBState%<br>%CustomerBCountry%</span>
+                      </div>
+                  </td>
+
+                    <td style="vertical-align:bottom;word-wrap: break-word;" align="right">
+
+                        <table style="table-layout: fixed; word-wrap: break-word;border-spacing: 0;border-collapse: collapse;" width="344" height="96" cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td style="padding:5px 10px 5px 0px;font-size:10pt;text-align:right;">
+                                        <span style="color: #817d7d;">Invoice Date :</span>
+                                    </td>
+                                    <td style="text-align:right;">%InvoiceDate%</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding:5px 10px 5px 0px;font-size: 10pt;text-align:right;">
+                                        <span style="color: #817d7d;">Terms :</span>
+                                    </td>
+                                    <td style="text-align:right;">
+                                        <span id="tmp_payment_terms">%PaymentTerms%</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding:5px 10px 5px 0px;font-size: 10pt;text-align:right;">
+                                        <span style="color: #817d7d;">Due Date :</span>
+                                    </td>
+                                    <td style="text-align:right;">
+                                        <span id="tmp_due_date">%DueDate%</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding:5px 10px 5px 0px;font-size: 10pt;text-align:right;">
+                                        <span style="color: #817d7d;">P.O.# :</span>
+                                    </td>
+                                    <td style="text-align:right;">
+                                        <span id="tmp_ref_number">%P.O.Number%</span>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div style="margin-top:20px;width:100%;">
+            <span></span>
+        </div>
+
+
+
+        <table class="pcs-itemtable" style="width:100%;margin-top:20px;table-layout:fixed;border-spacing: 0;border-collapse: collapse;" cellspacing="0" cellpadding="0" border="0">
+            <thead>
+                <tr style="height:32px;">
+                    <td style="font-size: 10pt;color: #ffffff;background-color: #3c3d3a;padding:5px 10px 5px 10px;word-wrap: break-word;">
+                        Item &amp; Description
+                    </td>
+                    <td style="font-size: 10pt;color: #ffffff;background-color: #3c3d3a;padding:5px 10px 5px 5px;word-wrap: break-word;width: 11%;" align="right">
+                        Qty
+                    </td>
+                    <td style="font-size: 10pt;color: #ffffff;background-color: #3c3d3a;padding:5px 10px 5px 5px;word-wrap: break-word;width: 11%;" align="right">
+                        Rate
+                    </td>
+                    <td style="font-size: 10pt;color: #ffffff;background-color: #3c3d3a;padding:5px 10px 5px 5px;word-wrap: break-word;width: 11%;" align="right">Discount</td>
+                    <td style="font-size: 10pt;color: #ffffff;background-color: #3c3d3a;padding:5px 10px 5px 5px;word-wrap: break-word;width:120px;" align="right">
+                        Amount
+                    </td>
+                </tr>
+            </thead>
+            <tbody id="lineitem">
+                <tr>
+
+                    <td style="font-size: 9pt;border-bottom: 1px solid #e3e3e3;background-color: #ffffff;color: #000000;padding: 10px 0px 10px 10px;" valign="top">
+                        <span id="tmp_item_name" style="word-wrap: break-word;">%ItemName%</span>
+                        <br>
+                        <span id="tmp_item_description" style="color: #727272;font-size: 9pt;white-space: pre-wrap;word-wrap: break-word;">%ItemDescription%</span>
+                    </td>
+                    <td style="font-size: 9pt;border-bottom: 1px solid #e3e3e3;background-color: #ffffff;color: #000000;padding: 10px 10px 5px 10px;text-align:right;word-wrap: break-word;" valign="top">
+                        <span id="tmp_item_qty">%ItemQty%</span>
+                        <br>
+                    </td>
+                    <td style="font-size: 9pt;border-bottom: 1px solid #e3e3e3;background-color: #ffffff;color: #000000;padding: 10px 10px 5px 10px;text-align:right;word-wrap: break-word;" valign="top">
+                        <span id="tmp_item_rate">%ItemRate%</span>
+                        <br>
+                    </td>
+                    <td id="tmp_item_discount" style="font-size: 9pt;border-bottom: 1px solid #e3e3e3;background-color: #ffffff;color: #000000;padding: 10px 10px 5px 10px;text-align:right;word-wrap: break-word;" valign="top">
+                        %ItemDiscount%
+                        <br>
+                    </td>
+                    <td style="font-size: 9pt;border-bottom: 1px solid #e3e3e3;background-color: #ffffff;color: #000000;text-align:right;padding: 10px 10px 10px 5px;word-wrap: break-word;" valign="top">%ItemAmount%
+                        <br>
+                    </td>
+                </tr>
+            </tbody>
+            <tbody id="headerItem">
+                 <tr>
+                     <td colspan="5" style="font-size: 9pt;border-bottom: 1px solid #e3e3e3;background-color: #eee;color: #000000;padding: 10px 0px 10px 10px;" valign="top">
+                         <b> %ItemHeaderName%</b>
+                     </td>
+                 </tr>
+            </tbody>
+        </table>
+        <div style="width: 100%;margin-top: 1px;">
+            <div style="width: 45%;padding: 3px 10px 3px 3px;font-size: 9pt;float: left;">
+                <div style="white-space: pre-wrap;"></div>
+            </div>
+            <div style="width: 50%;float:right;">
+                <table style="font-size: 9pt;color: #000000;background-color: #ffffff;border-spacing: 0;border-collapse: collapse;" width="100%" cellspacing="0" border="0">
+                    <tbody>
+                        <tr>
+                            <td style="padding: 5px 10px 5px 0;" valign="middle" align="right">Sub Total</td>
+                            <td style="width:120px;padding: 10px 10px 10px 5px;" id="tmp_subtotal" valign="middle" align="right">%InvoiceSubTotal%
+                                <br>
+                            </td>
+                        </tr>
+                    </tbody>
+
+
+                    <tbody id="taxItems">
+                        <tr style="height:10px;">
+                            <td style="padding: 5px 10px 5px 0;" valign="middle" align="right">%TaxName%
+                                <br>
+                            </td>
+                            <td style="width:120px;padding: 10px 10px 10px 5px;" valign="middle" align="right">%TaxValue%
+                                <br>
+                            </td>
+                        </tr>
+                    </tbody>
+
+                    <tbody>
+                        <tr>
+                            <td style="padding: 5px 10px 5px 0;" valign="middle" align="right"><b>Total</b>
+                            </td>
+                            <td style="width:120px;;padding: 10px 10px 10px 5px;" id="tmp_total" valign="middle" align="right"><b>%InvoiceTotal%</b>
+                                <br>
+                            </td>
+                        </tr>
+                        <tr>
+							<td style="padding: 5px 10px 5px 0;" valign="middle" align="right">Payment Made</td>
+							<td style="width:120px;;padding: 10px 10px 10px 5px; color:red;" valign="middle" align="right">%PaymentMade%</td>
+						</tr>
+                        <tr>
+							<td style="padding: 5px 10px 5px 0;" valign="middle" align="right">Credits Applied</td>
+							<td style="width:120px;;padding: 10px 10px 10px 5px; color:red;" valign="middle" align="right">%CreditsApplied%</td>
+						</tr>
+                        <tr style="height:40px;background-color: #f5f4f3;font-size: 9pt;color: #000000;">
+                            <td style="padding:5px 10px 5px 0;" valign="middle" align="right"><b>Balance Due</b>
+                            </td>
+                            <td style="width:120px;padding: 10px 10px 10px 5px;" id="tmp_balance_due" valign="middle" align="right"><b>%InvoiceBalance%</b>
+                                <br>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div style="clear: both;"></div>
+        </div>
+        <div style="clear:both;margin-top:50px;width:100%;">
+            <label id="tmp_notes_label" style="font-size: 10pt;color: #817d7d;">Notes</label>
+            <br>
+            <p style="margin-top:7px;white-space: pre-wrap;word-wrap: break-word;font-size: 8pt;">%Notes%
+                <br>
+            </p>
+        </div>
+
+
+        <div style="clear:both;margin-top:30px;width:100%;">
+            <label id="tmp_terms_label" style="font-size: 10pt;color: #817d7d;">Terms &amp; Conditions</label>
+            <br>
+            <p style="margin-top:7px;white-space: pre-wrap;word-wrap: break-word;font-size: 8pt;">%TermsAndCondition%
+                <br>
+            </p>
+        </div>
+
+    </div>
+
+
+
+</div>
